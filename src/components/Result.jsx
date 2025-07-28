@@ -38,7 +38,6 @@ export default function Result({ user, answers, onRestart, testType, setUser }) 
     <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center text-white text-center px-4">
       
       <h2 className="mb-4 fs-1">Resultados</h2>
-      {console.log(user.email)}
       <p className="fw-bold fs-4 mb-2">{user.name} {user.apellido}</p>
       
       <p className="text-light fs-5 mb-4">
