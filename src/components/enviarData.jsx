@@ -13,7 +13,8 @@ export const enviarResultado = async (sendData) => {
   };
 
   try {
-    const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/api/results`, {
+    console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL);
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/results`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
