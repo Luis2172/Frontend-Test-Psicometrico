@@ -1,0 +1,91 @@
+.start-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  min-height: 100vh;
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+
+.start-container h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.start-container .intro {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.start-container .highlight {
+  font-weight: 600;
+  color: #a5ffcd;
+  margin-bottom: 1.2rem;
+  display: inline-block;
+}
+
+.start-container .instructions {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.start-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+.start-button {
+  margin-top: 2rem;
+  padding: 0.95rem 2.4rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(to right, #00e676, #00c853);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.start-button:hover {
+  background: linear-gradient(to right, #00c853, #009c3e);
+  transform: scale(1.05);
+}
+
+.scale-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scale-list li {
+  display: flex;
+  align-items: center;           /* Alineación vertical más precisa */
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;         /* REDUCIDO aún más */
+  line-height: 1.2;              /* Más compacto */
+}
+
+.scale-list .num {
+  width: 24px;                   /* Ligero ajuste horizontal */
+  text-align: right;
+  font-weight: 600;
+}
+
+

@@ -1,0 +1,144 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  
+}
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem; 
+  text-align: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  color: white;
+  background: linear-gradient(to bottom, #002733, #00141b);
+  overflow-y: auto;
+}
+
+.question-title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.question-text {
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  max-width: 90%;
+  color: white;
+  line-height: 1.5;
+  min-height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1000px;
+  width: 100%;
+  padding: 1rem 0;
+  overflow: hidden; 
+}
+
+.option-button {
+  flex: 1 1 18%; /* en PC entran los 5 botones en fila */
+  min-width: 180px;
+  padding: 0.8rem 1rem;
+  white-space: normal;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.option-button:hover {
+  background-color: #e4e4e4;
+}
+
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .option-button {
+    flex: 1 1 45%;
+  }
+
+  .question-title {
+    font-size: 1.4rem;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  
+
+  .question-title {
+    font-size: 1.2rem;
+  }
+
+  .question-text {
+    font-size: 1.2rem;
+    min-height: 6.5rem; 
+    margin-bottom: 1rem; 
+  }
+
+  .option-button {
+    margin-bottom: 0.5rem; 
+  }
+}
+
+.custom-progress-container {
+  width: 90%;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #2e2e2e;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.custom-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #00e676, #00c853);
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+.custom-progress-label {
+  margin-top: 0.3rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+}

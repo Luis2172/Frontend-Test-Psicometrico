@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import '../Styles.css';
+import '../CSS/Styles.css';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 

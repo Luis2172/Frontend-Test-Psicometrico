@@ -2,9 +2,11 @@
 body, html, #root {
   margin: 0;
   height: 100%;
-  background: linear-gradient(to top right, #00313f, #001726);
+  background: linear-gradient(to bottom, #002733, #00141b);
   font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
 }
+
 .centered-container {
   display: flex;
   flex-direction: column;
@@ -41,11 +43,11 @@ button:hover {
 }
 
 .options-container {
-  display: flex;           /* ✅ Los pone en fila */
-  flex-direction: row;     /* ✅ Asegura orientación horizontal */
-  gap: 12px;               /* ✅ Espacio entre botones */
+  display: flex;           
+  flex-direction: row;     
+  gap: 12px;               
   margin-top: 10px;
-  flex-wrap: wrap;         /* ✅ Permite que se acomoden si el espacio es pequeño */
+  flex-wrap: wrap;         
 }
 
 .options-container button {
@@ -77,12 +79,6 @@ button:hover {
   text-align: center;
   overflow-y: auto;
 }
-
-progress {
-  height: 12px;
-  border-radius: 6px;
-}
-
 
 .p-login {
   display: block;
@@ -143,7 +139,7 @@ input[type="checkbox"] {
   }
 
   .options-container {
-    flex-direction: column;  /* Opcional si prefieres vertical en móviles */
+    flex-direction: column; 
   }
 
   .pregunta-container {
