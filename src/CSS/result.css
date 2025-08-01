@@ -1,0 +1,93 @@
+.result-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #002b36; /* color fondo */
+  color: white;
+  text-align: center;
+}
+
+.result-card {
+  background-color: #212529;
+  padding: 3rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 600px;
+}
+
+.result-title {
+  font-size: 2.5rem;
+  color: #17c1e8;
+  margin-bottom: 1rem;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.test-type {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.score-box {
+  background-color: #48b481;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.score-text, .logic-score {
+  margin: 0;
+  color: white;
+}
+
+.score-text span,
+.logic-score span {
+  font-weight: bold;
+}
+
+.message {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.result-status {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.text-success {
+  color: #4ade80;
+}
+
+.text-danger {
+  color: #ef4444;
+}
+
+.send-button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  border: 1px solid #17c1e8;
+  background-color: transparent;
+  color: #17c1e8;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #17c1e8;
+  color: white;
+}
+
+.send-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

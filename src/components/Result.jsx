@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { enviarResultado } from "./enviarData";
+import '../CSS/result.css'
 
 export default function Result({ user, answers, onRestart, testType, setUser }) {
   const [sending, setSending] = useState(false);
@@ -39,7 +40,7 @@ export default function Result({ user, answers, onRestart, testType, setUser }) 
       setTimeout(() => {
         onRestart();
         setUser(null);
-      }, 3000); // pequeña pausa para ver el mensaje de éxito
+      }, 2500); 
     } catch (err) {
       console.error(err);
       setError("Error al enviar el correo. Intenta nuevamente.");
@@ -49,29 +50,35 @@ export default function Result({ user, answers, onRestart, testType, setUser }) 
   };
 
   return (
-    <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center text-white text-center px-4">
-      <h2 className="mb-4 fs-1">Resultados</h2>
-      <p className="fw-bold fs-4 mb-2">{user.name} {user.apellido}</p>
+    <div className="result-screen">
+      <div className="result-card">
+        <h2 className="result-title">🎓 Resultados</h2>
+        <h4 className="user-name">{user.name} {user.apellido}</h4>
+        <p className="test-type">
+          Test: Ingeniería en <strong>{testType === 'Sistemas' ? 'Sistemas Computacionales' : 'Informática'}</strong>
+        </p>
 
-      <p className="text-light fs-5 mb-4">
-        Test: Ingeniería en {testType === 'Sistemas' ? 'Sistemas Computacionales' : 'Informática'}
-      </p>
+        <div className="score-box">
+          <h4 className="score-text">Puntaje total: <span>{score} / {total}</span></h4>
+          <h5 className="logic-score">Razonamiento lógico: <span>{logicaScore} / {logicaTotal}</span></h5>
+        </div>
 
-      <h4 className="fs-3 mb-2">Puntaje: {score} / {total}</h4>
-      <h5 className="fs-5 mb-2">Lógica: {logicaScore} / {logicaTotal}</h5>
+        <p className="message">{mensaje}</p>
 
-      <p className="fs-5 mb-4">{mensaje}</p>
-      <p className="fs-5 mb-4">{result}</p>
+        <p className={`result-status ${result === 'Aprobado' ? 'text-success' : 'text-danger'}`}>
+          {result}
+        </p>
 
-      <button 
-        onClick={handleClick}
-        className="btn btn-primary btn-lg px-4"
-        disabled={sending || sent}
-      >
-        {sending ? 'Enviando...' : sent ? '¡Enviado!' : 'Enviar resultados a mi correo'}
-      </button>
+        <button
+          onClick={handleClick}
+          className="send-button"
+          disabled={sending || sent}
+        >
+          {sending ? 'Enviando...' : sent ? '¡Enviado!' : 'Enviar resultados a mi correo'}
+        </button>
 
-      {error && <p className="text-danger mt-3">{error}</p>}
+        {error && <p className="text-danger mt-3">{error}</p>}
+      </div>
     </div>
   );
-}
+};
