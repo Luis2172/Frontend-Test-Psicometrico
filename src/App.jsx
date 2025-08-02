@@ -37,7 +37,7 @@ function App() {
   if (!user) return <Login onLogin={setUser} />;
   if (showStartScreen) return <StartScreen user={user} onContinue={() => setShowStartScreen(false)} />;
   if (!testType) return <TestSelector onSelect={setTestType} user={user}/>;
-  if (isFinished) return <Result user={ user } answers={ answers } onRestart={ restart } testType={ testType } setUser={setUser}/>;
+  if (isFinished) return <Result user={ user } answers={ answers } onRestart={ restart } testType={ testType }/>;
 
   return (
     <div className="p-4 max-w-xl mx-auto">

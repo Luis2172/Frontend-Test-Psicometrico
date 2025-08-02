@@ -1,13 +1,13 @@
 
 export const enviarResultado = async (sendData) => {
 
-    const { user, testType, logica, logicaScore, score } = sendData;
+    const { user, testType, answers, logicaScore, score } = sendData;
   const data = {
     name: user.name,
     apellido: user.apellido,
-    email: user.email,
+    nivel: user.nivel,
     testType,
-    answers: logica,
+    answers: answers,
     logicScore: logicaScore,
     totalScore: score
   };

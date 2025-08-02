@@ -2,17 +2,18 @@
 import { useState } from "react";
 import { enviarResultado } from "./enviarData";
 import '../CSS/result.css'
+import {generarPDF} from './PdfGenerator'
 
-export default function Result({ user, answers, onRestart, testType, setUser }) {
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [error, setError] = useState(null);
+export default function Result({ user, answers, onRestart, testType}) {
 
   const total = answers.length * 5;
   const score = answers.reduce((a, b) => a + b, 0);
   const logica = answers.slice(0, 9);
   const logicaTotal = 9 * 5;
   const logicaScore = logica.reduce((a, b) => a + b, 0);
+
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
 
   let mensaje = '';
   let result = '';
@@ -32,22 +33,22 @@ export default function Result({ user, answers, onRestart, testType, setUser }) 
   }
 
   const handleClick = async () => {
-    setSending(true);
-    setError(null);
     try {
-      await enviarResultado({ user, testType, logica, logicaScore, score });
+      await enviarResultado({ user, testType, answers, logicaScore, score });
       setSent(true);
       setTimeout(() => {
         onRestart();
-        setUser(null);
       }, 2500); 
     } catch (err) {
-      console.error(err);
-      setError("Error al enviar el correo. Intenta nuevamente.");
+      console.error("Error al guardar el resultado:", err);
     } finally {
       setSending(false);
     }
   };
+
+  const handleDownloadPDF = () => {
+  generarPDF({ user, testType, logicaScore, score, mensaje, result })
+};
 
   return (
     <div className="result-screen">
@@ -69,15 +70,20 @@ export default function Result({ user, answers, onRestart, testType, setUser }) 
           {result}
         </p>
 
-        <button
-          onClick={handleClick}
-          className="send-button"
+        <div className="d-flex flex-column gap-3 mt-4 w-100" style={{ maxWidth: '600px' }}>
+        <button onClick={handleDownloadPDF} className="btn btn-outline-info btn-lg w-100">
+          Descargar resultados en PDF
+        </button>
+        <button 
+          onClick={handleClick} 
+          className="btn btn-outline-light btn-lg w-100"
           disabled={sending || sent}
         >
-          {sending ? 'Enviando...' : sent ? '¡Enviado!' : 'Enviar resultados a mi correo'}
+          {sending ? 'Enviando...' : sent ? '¡Enviado!' : 'Enviar Resultados'}
         </button>
+      </div>
 
-        {error && <p className="text-danger mt-3">{error}</p>}
+        
       </div>
     </div>
   );

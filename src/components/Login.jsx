@@ -7,34 +7,14 @@ import '../CSS/Styles.css';
 export default function Login({ onLogin }) {
   const [name, setName] = useState('');
   const [apellido, setApellido] = useState('');
-  const [email, setCorreo] = useState('');
+  const [nivel, setNivel] = useState('');
 
   const [isChecked, setIsChecked] = useState(false);
 
-  const correoRef = useRef();
-
-  const esCorreoValido = (correo) => {
-    const dominiosPermitidos = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com'];
-    const partes = correo.split('@');
-    if (partes.length !== 2) return false;
-    return dominiosPermitidos.includes(partes[1].toLowerCase());
-};
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!e.target.checkValidity()) {
-      e.target.reportValidity();
-      return;
-    }
-
-    if (!esCorreoValido(email)) {
-      correoRef.current.setCustomValidity("El correo debe terminar en gmail.com, hotmail.com, outlook.com o yahoo.com");
-      correoRef.current.reportValidity();
-      return;
-    }
-
-    onLogin({ name, apellido, email });
+    onLogin({ name, apellido, nivel });
   };
 
   return (
@@ -67,32 +47,48 @@ export default function Login({ onLogin }) {
           onChange={(e) => setApellido(e.target.value)}
         />
 
-        <input
-          type="email"
-          ref={correoRef}
-          placeholder="Correo"
-          className="form-control mb-4 input-form"
-          value={email}
-          onChange={(e) => {
-            setCorreo(e.target.value);
-            correoRef.current.setCustomValidity(""); 
-          }}
-          required
-        />
+  
 
-        <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '16px' }}>
-          <input
-            type="checkbox"
-            id="permisoCorreo"
-            checked={isChecked}
-            onChange={(e) => setIsChecked(e.target.checked)}
-            style={{ marginTop: '4px', marginRight: '8px', transform: 'translateY(3px)' }}
-          />
-          <label className="checkbox-label" htmlFor="permisoCorreo" >
-            Acepto que mi correo electrónico será utilizado únicamente con fines educativos y de orientación vocacional.
-          </label>
-        </div>
+  <div className="mb-4">
+    <p className="text-dark fw-semibold text-center mb-3 fs-6">
+      ¿Cuál es tu nivel académico actual?
+    </p>
+    <div className="d-flex gap-3 justify-content-center">
+      <button 
+        type="button"
+        className={`btn px-4 py-2 rounded-pill fw-bold shadow-sm border ${
+          nivel === 'Preparatoria' ? 'btn-success text-white' : 'btn-outline-primary'
+        }`}
+        onClick={() => setNivel('Preparatoria')}
+      >
+        Preparatoria
+      </button>
 
+      <button 
+        type="button"
+        className={`btn px-4 py-2 rounded-pill fw-bold shadow-sm border ${
+          nivel === 'Ingeniería' ? 'btn-success text-white' : 'btn-outline-primary'
+        }`}
+        onClick={() => setNivel('Ingeniería')}
+      >
+        Ingeniería
+      </button>
+    </div>
+</div>
+
+
+<div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '16px' }}>
+      <input
+        type="checkbox"
+        id="permisoCorreo"
+        checked={isChecked}
+        onChange={(e) => setIsChecked(e.target.checked)}
+        style={{ marginTop: '4px', marginRight: '8px', transform: 'translateY(3px)' }}
+      />
+      <label className="checkbox-label" htmlFor="permisoCorreo" >
+        Acepto que mis datos serán utilizado únicamente con fines educativos y de orientación vocacional.
+      </label>
+    </div>
 
         <button
           type="submit"
@@ -100,7 +96,7 @@ export default function Login({ onLogin }) {
           disabled={
             !name.trim() ||
             !apellido.trim() ||
-            !email.trim() ||
+            !nivel.trim() ||
             !isChecked
           }
         >
